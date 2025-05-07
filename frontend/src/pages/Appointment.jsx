@@ -113,7 +113,7 @@ const Appointment = () => {
           withCredentials: true, // Optional: Useful if using cookies
         }
       );
-      );
+
       if (data.success) {
         toast.success(data.message);
         getDoctosData();
