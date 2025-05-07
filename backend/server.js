@@ -18,7 +18,7 @@ app.use(express.json())
 // app.use(cors())
 const corsOptions = {
   origin: (origin, callback) => {
-    const allowedOrigins = ['https://dodcor-project-admin.vercel.app'];
+    const allowedOrigins = ['https://dodcor-project-admin.vercel.app',"https://dodcor-project.onrender.com/api/admin/add-doctor"];
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
