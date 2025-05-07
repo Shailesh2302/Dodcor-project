@@ -23,16 +23,19 @@ const MyAppointments = () => {
 
     // Getting User Appointments Data Using API
     const getUserAppointments = async () => {
-        try {
-
-            const { data } = await axios.get(backendUrl + '/api/user/appointments', { headers: { token } })
-            setAppointments(data.appointments.reverse())
-
-        } catch (error) {
-            console.log(error)
-            toast.error(error.message)
-        }
+    try {
+        const { data } = await axios.get(`${backendUrl}/api/user/appointments`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        setAppointments(data.appointments.reverse());
+    } catch (error) {
+        console.log(error);
+        toast.error(error.response?.data?.message || error.message);
     }
+};
+
 
     // Function to cancel appointment Using API
     const cancelAppointment = async (appointmentId) => {
