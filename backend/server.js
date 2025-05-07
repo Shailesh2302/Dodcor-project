@@ -17,7 +17,10 @@ connectCloudinary()
 app.use(express.json())
 // app.use(cors())
 const corsOptions = {
-  origin: 'https://dodcor-project-admin.vercel.app',
+  origin: [
+      'https://dodcor-project-admin.vercel.app',
+      'https://dodcor-project-client.vercel.app'
+    ];
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'aToken'],
@@ -32,6 +35,7 @@ app.options('*', cors(corsOptions));
 // Optional: Add this middleware to be extra sure CORS headers are set
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://dodcor-project-admin.vercel.app");
+  res.header("Access-Control-Allow-Origin", "https://dodcor-project-client.vercel.app");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, aToken");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
