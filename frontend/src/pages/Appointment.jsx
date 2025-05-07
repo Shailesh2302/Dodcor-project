@@ -104,12 +104,15 @@ const Appointment = () => {
 
     try {
       const { data } = await axios.post(
-        backendUrl + "/api/user/book-appointment",
+        `${backendUrl}/api/user/book-appointment`,
         { docId, slotDate, slotTime },
-        // { headers: { token } }
-         headers: {
-      Authorization: `Bearer ${token}`, // 👈 Standard way to send auth token
-    },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // 👈 Standard way to send auth token
+          },
+          withCredentials: true, // Optional: Useful if using cookies
+        }
+      );
       );
       if (data.success) {
         toast.success(data.message);
